@@ -1,0 +1,3 @@
+add_subdirectory(lib)
+add_library(furry_3rdparty_k_triangulation twoview_triangulation.cc)
+target_link_libraries(furry_3rdparty_k_triangulation furry_3rdparty_k_triangulattion_libmatrix)

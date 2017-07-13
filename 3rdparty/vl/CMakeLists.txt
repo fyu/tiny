@@ -1,0 +1,9 @@
+add_library(furry_3rdparty_vlfeat
+						host.c
+						imopv_sse2.c
+						imopv.c
+						mathop_sse2.c
+						mathop.c
+						random.c
+						sift.c
+						generic.c)

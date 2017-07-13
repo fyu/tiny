@@ -1,0 +1,29 @@
+add_library(
+		cminpack
+		chkder.c
+		covar.c
+		covar1.c
+		enorm.c
+		hybrd1.c
+		hybrj.c
+		lmdif1.c
+		lmstr1.c
+		qrfac.c
+		r1updt.c
+		dogleg.c
+		fdjac1.c
+		hybrd.c
+		lmder1.c
+		lmdif.c
+		lmstr.c
+		qrsolv.c
+		rwupdt.c
+		dpmpar.c
+		fdjac2.c
+		hybrj1.c
+		lmder.c
+		lmpar.c
+		qform.c
+		r1mpyq.c
+)
+

@@ -1,0 +1,86 @@
+NAME		triangulation2
+
+VERSION		1.0.0
+
+DESCRIPTION	Given 2D corresponding points over two images
+		and their 3 x 4 projection matrics, this program
+		optimally corrects the 2D corresponding points
+		such that they strictly satisfy the epipolar
+		equation.
+		
+ARGUMENTS	arg1 : the projection matrix of the 1st image. [in]
+		arg2 : the projection matrix of the 2dn image. [in]
+		arg3 : the feature points of the the 1st image. [in]
+		arg4 : the feature points of the 2nd image. [in]
+		arg5 : the corrected feature points of the 1st image. [out]
+		arg6 : the corrected feature points of the 2st image. [out]
+
+OPTIONS		--convergence : the constant for convergence
+			        (default 1.0e-10)
+		-F0           : the constant for computational stability.
+                                (default 600.0 [pixels])
+		
+INPUTS
+		FEATURE POINTS
+		
+		Input feature coordinates for each image as a
+		separate file.  Start each file with the number
+		of the feature points followrd by the feature
+		coordinates in that image.  Write the x and y
+		coordinates of one point in one line.
+
+		--- input1.dat --------------------------------
+		9
+		
+		42.000000	41.000000 <-- x and y coordinates of 
+		175.000000	282.000000    the feature points.
+		540.000000	330.000000
+		372.000000	113.000000
+		98.000000	126.000000
+		243.000000	135.000000
+		446.000000	238.000000
+		85.000000	141.000000
+		123.000000	86.000000
+		-----------------------------------------------
+
+		PROJECTION MATRIX
+
+		Input projection matrics P must satisfy the
+		following form.
+
+		(x, y, 1)^T ~ P (X, Y, Z, 1)^T,
+
+		where ~ means the equation holds up to scale.
+					   
+ENVIRONMENT	Linux
+
+REFERENCE
+		K. Kanatani, Y. Sugaya, and H. Niitsuma,
+		Triangulation from Two Views Revisited:
+		Hartley-Sturm vs. Optimal Correction,
+		19th British Machine Vision Conference
+		(BMVC2008), pp. 173--182.
+
+ACKNOWLEDGMENTS
+	        Program codes in the following book are used for
+	        various numerical computations including
+	        eigenvector calculation.  We thank Haruhiko
+	        Okumura for making numerical computation codes
+	        publicly available without imposing any
+	        retractions on their distribution.
+
+		H. Okumura, Algorithm Encyclopedia in C,
+		Gijyutsu-Hyoron-Sha, Tokyo,
+		1991. (ISBN4-87408-414-1 C3055)
+
+NOTES		a. Please keep in mind that we cannot grantee
+		   our programs to be bug free. 
+		b. Please do not use our programs for commercial
+		   purposes without our permission.
+		c. When you publish or present your work in
+		   which our programs are used, we are happy if
+		   you inform us so and publicly acknowledge so.
+
+LAST UPDATED	2008/12/10
+
+AUTHOR		Yasuyuki Sugaya <sugaya@iim.ics.tut.ac.jp>

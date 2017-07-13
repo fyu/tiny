@@ -1,0 +1,46 @@
+package furry.tiny;
+
+message SmoothDepth {
+  optional double weight = 1 [default = 1];
+  optional int32 num_neighbors = 2 [default = 5];
+  optional double range_squared = 3 [default = -1];
+}
+
+message SolverOptions {
+  optional bool minimizer_progress_to_stdout = 1 [default = false];
+  optional int32 max_num_iterations = 2 [default = 12];
+  optional int32 num_threads = 3 [default = 12];
+  optional bool use_inner_iterations = 4 [default = false];
+  optional bool print_summary = 5 [default = false];
+}
+
+message BundleSettings {
+  required double f_mean = 1;
+  required double f_std = 2;
+  required double k_mean = 3;
+  required double k_std = 4;
+  required double angle_mean = 5;
+  required double angle_std = 6;
+  required double angle_adj_mean = 7;
+  required double angle_adj_std = 8;
+
+  required bool zero_depth = 9;
+  required bool zero_rotation = 10;
+  required bool zero_translation = 11;
+
+  required bool smooth_camera_trajectory = 12;
+  required double smooth_camera_trajectory_weight = 13;
+
+  optional bool calc_covariance = 14 [default = false];
+  optional bool with_smooth_depth = 15 [default = false];
+  optional SmoothDepth smooth_depth = 16;
+
+  required SolverOptions solver_options = 17;
+
+  optional bool fix_internals = 18 [default = true];
+  optional bool fix_externals = 19 [default = false];
+  optional bool fix_tracks =  20 [default = false];
+
+  optional int32 ref_camera_index = 21 [default = 0];
+  optional bool use_robustifier = 22 [default = false];
+}

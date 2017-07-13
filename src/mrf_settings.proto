@@ -1,0 +1,73 @@
+package furry.tiny;
+
+message FirstOrderSmoothness {
+  required double scale = 1;
+  required double weight = 2;
+  required double color_max_weight = 3;
+  required double color_sigma = 4;
+}
+
+message SecondOrderSmoothness {
+  required double scale = 1;
+  required double weight = 2;
+  required double color_max_weight = 3;
+  required double color_sigma = 4;
+}
+
+message CeresOptions {
+  optional bool minimizer_progress_to_stdout = 1 [default = false];
+  optional int32 max_num_iterations = 2 [default = 12];
+  optional int32 num_threads = 3 [default = 12];
+  optional bool use_inner_iterations = 4 [default = false];
+  optional bool print_summary = 5 [default = false];
+}
+
+message MeanShiftSettings {
+  optional double sp = 1 [default = -1];
+  optional double sr = 2 [default = -1];
+  optional int32 max_level = 3 [default = 1];
+}
+
+message SlicSettings {
+  optional int32 k = 1; // Desired number of superpixels
+  optional double m = 2; // Compactness factor
+}
+
+message SmoothSettings {
+  optional bool use_mean_shift = 1 [default = false];
+  optional MeanShiftSettings mean_shift_settings = 2;
+  optional bool use_slic = 3 [default = false];
+  optional SlicSettings slic_settings = 4;
+}
+
+message ContinuousMrfSettings {
+  required double rbf_spacing = 1;
+  required bool use_fos = 2;
+  optional FirstOrderSmoothness fos = 3;
+  required bool use_sos = 4;
+  optional SecondOrderSmoothness sos = 5;
+  optional CeresOptions solver_options = 6;
+}
+
+message DiscreteMrfSettings {
+  required int32 num_iterations = 1;
+  required bool use_fos = 2;
+  optional FirstOrderSmoothness fos = 3;
+}
+
+message DenseCrfSettings {
+  required int32 num_iterations = 1;
+  optional bool use_p = 2 [default = false]; // use position connection
+  optional float p_std = 3 [default = 3];
+  optional float p_weight = 4 [default = 1];
+  optional bool use_b = 5 [default = false]; // use bilateral connection
+  optional float b_pstd = 6 [default = 60];
+  optional float b_cstd = 7 [default = 13];
+  optional float b_weight = 8 [default = 1];
+  optional float max_panelty_ratio = 9 [default = 0.15];
+  optional bool use_b2 = 10 [default = false]; // use bilateral connection
+  optional float b2_pstd = 11 [default = 3];
+  optional float b2_cstd = 12 [default = 20];
+  optional float b2_weight = 13 [default = 2];
+  optional float min_confidence = 14 [default = 0];
+}
