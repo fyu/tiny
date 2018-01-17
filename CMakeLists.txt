@@ -16,15 +16,14 @@ set(CMAKE_MODULE_LINKER_FLAGS "-stdlib=libc++")
 set(CMAKE_Fortran_FLAGS "-O3 -ffast-math")
 else (APPLE)
 # set(CMAKE_CXX_COMPILER "clang++")
- set(CMAKE_CXX_COMPILER "/u/fy/usr/gcc-4.8.2/bin/g++")
-#set(CMAKE_CXX_COMPILER "g++")
+#set(CMAKE_CXX_COMPILER "/u/fy/usr/gcc-4.8.2/bin/g++")
+set(CMAKE_CXX_COMPILER "g++")
 #set(CMAKE_CXX_FLAGS "-std=c++11 -Wall -Wno-reorder -Wno-overloaded-virtual -Wno-unused-private-field -Wno-uninitialized -Wno-mismatched-tags")
 set(CMAKE_CXX_FLAGS "-std=c++11 -Wno-reorder -fpermissive -fopenmp")
 # set(GHOME /n/fs/graphicslab/fy/usr/)
 # set(GHOME /usr/local/)
 set(GHOME $ENV{GHOME}/usr/)
 message(STATUS "GHOME: " $ENV{GHOME})
-message(STATUS "GAPS: " $ENV{GAPS_PATH})
 set(CMAKE_LIBRARY_PATH ${GHOME}/lib/ ${CMAKE_LIBRARY_PATH})
 endif (APPLE)
 
@@ -144,7 +143,7 @@ endif(APPLE)
 
 set(GRAPHICS_LIBRARIES furry_3rdparty_glew ${OPENGL_LIBRARY} ${GLUT_LIBRARY})
 # set(GRAPHICS_LIBRARIES ${OPENGL_LIBRARY} ${GLUT_LIBRARY})
-set(GL_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/3rdparty/glew-1.10.0/include)
+set(GL_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/furry/3rdparty/glew-1.10.0/include)
 
 ############################################################
 ## Ceres
@@ -162,7 +161,7 @@ find_package(Protobuf REQUIRED)
 ## gaps
 ############################################################
 
-set(GAPS_PATH $ENV{GAPS_PATH})
+set(GAPS_PATH ${PROJECT_SOURCE_DIR}/furry/3rdparty/gaps)
 
 set(GAPS_LIBRARY_DIR ${GAPS_PATH}/lib/x86_64)
 set(GAPS_INCLUDE_DIR ${GAPS_PATH}/pkgs)
@@ -183,9 +182,10 @@ if (APPLE)
 set(OPTIMIZATION_LIBRARIES ${CERES_LIBRARIES} ${SUITESPARSE_LIBRARIES} amd gmp mpfr glog ${GFLAGS_LIBRARIES} lapack blas protobuf)
 else (APPLE)
 set(OPT_LIBRARY_DIR /u/fy/usr/lib)
-set(OPTIMIZATION_LIBRARIES ${CERES_LIBRARIES} ${SUITESPARSE_LIBRARIES} cholmod amd gomp
+set(OPTIMIZATION_LIBRARIES ${CERES_LIBRARIES} ${SUITESPARSE_LIBRARIES} cholmod amd gomp mpfr
 # ${GHOME}/lib/libgomp.so 
-${GHOME}/lib/libmpfr.so libsuitesparseconfig.a  
+# ${GHOME}/lib/libmpfr.so 
+# libsuitesparseconfig.a  
 glog ${GFLAGS_LIBRARIES} lapack blas protobuf)
 endif (APPLE)
 
@@ -202,8 +202,8 @@ add_definitions(${QT_DEFINITIONS})
 include_directories(
 					"/usr/local/include/"
 					#"/usr/include/suitesparse/"
-					${PROJECT_SOURCE_DIR}/../
-					${PROJECT_SOURCE_DIR}/../../
+					${PROJECT_SOURCE_DIR}
+					${PROJECT_SOURCE_DIR}/furry/3rdparty/vcglib
 					${GL_INCLUDE_DIR}
 					${EIGEN3_INCLUDE_DIR}
 					${GFLAGS_INCLUDE_DIR}
@@ -217,7 +217,7 @@ include_directories(
 
 
 message(STATUS ${PROJECT_SOURCE_DIR})
-add_subdirectory(3rdparty)
-add_subdirectory(common)
-add_subdirectory(gui)
+add_subdirectory(furry/3rdparty)
+add_subdirectory(furry/common)
+add_subdirectory(furry/gui)
 add_subdirectory(src)

@@ -77,7 +77,7 @@ Mat DrawEpipolarLines(const Mat &image, const Vector3d &epipole,
 }
 
 int main(int argc, char *argv[]) {
-  google::ParseCommandLineFlags(&argc, &argv, true);
+  gflags::ParseCommandLineFlags(&argc, &argv, true);
   vector<Camera*> all_cameras;
   ReadCameras(StringPrintf("%s/%s_cameras.txt",
                            FLAGS_in_dir.c_str(),
