@@ -1,0 +1,37 @@
+f_mean: 1781
+f_std: 1
+k_mean: 0
+k_std: 1.11
+angle_mean: 0
+angle_std: 0.0
+angle_adj_mean: 0
+angle_adj_std: 0
+
+smooth_camera_trajectory: false
+smooth_camera_trajectory_weight: 1
+
+zero_depth: false
+zero_rotation: false
+zero_translation: false
+calc_covariance: true
+with_smooth_depth: false
+smooth_depth {
+  weight: 0.01
+  num_neighbors: 10
+  range_squared: -1
+}
+
+solver_options {
+max_num_iterations: 300
+num_threads: 12
+minimizer_progress_to_stdout: false
+use_inner_iterations: true
+print_summary: false
+}
+
+fix_internals: true
+fix_externals: true
+fix_tracks: false
+
+ref_camera_index: 0
+use_robustifier: false

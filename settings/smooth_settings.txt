@@ -1,0 +1,6 @@
+use_mean_shift: true
+mean_shift_settings {
+  sp: 20
+  sr: 20
+  max_level: 1
+}
