@@ -711,7 +711,7 @@ bool Bundle(const tiny::BundleSettings& settings,
   // timer.Start();
 
   Solver::Summary summary;
-  Solve(options, &problem, &summary);
+  ceres::Solve(options, &problem, &summary);
 
   // timer.Stop();
   if (solver_options.print_summary()) {

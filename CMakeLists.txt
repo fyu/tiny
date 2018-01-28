@@ -115,7 +115,7 @@ endif()
 
 pkg_check_modules(OPENCV opencv)
 set(OPENCV_INCLUDE_DIR ${OPENCV_INCLUDE_DIR})
-set(OPENCV_LIBRARIES opencv_core opencv_calib3d opencv_imgproc opencv_highgui opencv_features2d opencv_flann opencv_nonfree opencv_video)
+set(OPENCV_LIBRARIES opencv_core opencv_calib3d opencv_imgproc opencv_highgui opencv_features2d opencv_flann opencv_video opencv_videoio opencv_imgcodecs)
 if (APPLE)
 set(OPENCV_LIBRARY_DIR ${OPENCV_LIBRARY_DIR})
 else ()

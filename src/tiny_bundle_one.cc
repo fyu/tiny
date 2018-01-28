@@ -619,7 +619,7 @@ bool BundleOne(const tiny::BundleSettings& settings,
   // timer.Start();
 
   Solver::Summary summary;
-  Solve(options, &problem, &summary);
+  ceres::Solve(options, &problem, &summary);
 
   // timer.Stop();
   if (solver_options.print_summary()) {
@@ -628,7 +628,7 @@ bool BundleOne(const tiny::BundleSettings& settings,
 
   if (settings.calc_covariance()) {
     Covariance::Options cov_options;
-    cov_options.algorithm_type = ceres::SUITE_SPARSE_QR;
+    cov_options.algorithm_type = ceres::SPARSE_QR;
     cov_options.num_threads = solver_options.num_threads();
     cov_options.apply_loss_function = false;
     vector<pair<const double*, const double*>> covariance_blocks;

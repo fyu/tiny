@@ -28,7 +28,7 @@ void GetMin(float *values, int size, float *first, float *second) {
 
   float *last = values + size;
   values += 2;
-  while (values <= last) {
+  while (values < last) {
     if (*values < f) {
       f = *values;
     } else if (*values < s) {

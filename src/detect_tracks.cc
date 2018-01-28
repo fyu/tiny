@@ -20,6 +20,7 @@ const char *kUsageMessage = "Detect features in the images and group them " \
 using namespace cv;
 using namespace furry;
 using namespace furry::tiny;
+using namespace std;
 
 DEFINE_string(in_model, "", "");
 DEFINE_string(in_image_dir, "", "");
