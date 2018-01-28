@@ -1,0 +1,12 @@
+num_iterations: 200
+use_p: false
+p_std: 3
+p_weight: 1
+use_b: false
+b_pstd: 20
+b_cstd: 10
+b_weight: 0.2
+use_b2: true
+b2_pstd: 5
+b2_cstd: 20
+b2_weight: 1
