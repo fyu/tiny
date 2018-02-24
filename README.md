@@ -6,7 +6,7 @@
 - gflags
 - tbb
 - boost
-- opencv 2.4
+- opencv 3.0
 - mpfr
 - gomp
 - suitesparse
